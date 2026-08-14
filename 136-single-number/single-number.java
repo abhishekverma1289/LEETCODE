@@ -1,3 +1,4 @@
+// challange do it for o(1)
 class Solution {
     public int singleNumber(int[] nums) {
         HashMap<Integer , Integer> map = new HashMap<>();
