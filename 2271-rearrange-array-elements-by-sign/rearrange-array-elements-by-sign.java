@@ -1,31 +1,18 @@
 class Solution {
     public int[] rearrangeArray(int[] nums) {
         int[] numsCopy = new int[nums.length];
-        int i=0;
-        int x = 0 ; int y = 0;
+        int positiveIndex = 0; int negativeIndex=1;
 
-        while(y < nums.length){
-            if(nums[y] >= 0){
-                numsCopy[i] = nums[y];
-                i += 2;
+        for(int num : nums){
+            if(num >= 0){
+                numsCopy[positiveIndex] = num;
+                positiveIndex += 2;
             }
-            y++;
-        } 
-
-        i=1;
-        while(x < nums.length){
-            if(nums[x] < 0){
-                numsCopy[i] = nums[x];
-                i += 2;
+            else{
+                numsCopy[negativeIndex] = num;
+                negativeIndex += 2;
             } 
-            x++;
         }
-
-        i=0;
-        for(int num: numsCopy){
-            nums[i] = num;
-            i++;
-        }
-        return nums;
+        return numsCopy;
     }    
  }
