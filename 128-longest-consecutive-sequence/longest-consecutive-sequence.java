@@ -1,3 +1,4 @@
+
 class Solution {
     public int longestConsecutive(int[] nums) {
       HashSet <Integer>  set = new HashSet<>();
