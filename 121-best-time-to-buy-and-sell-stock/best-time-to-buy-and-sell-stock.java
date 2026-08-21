@@ -1,16 +1,15 @@
-//don't create suffixMax , just remember the maxright till point in variable , SufixMax - prices[i] is profit
 class Solution {
     public int maxProfit(int[] prices) {
-       int lastHigh = prices[prices.length-1];
-       int maxProfit = 0;
+        int n = prices.length;
+        int currentHigh = prices[n-1];
+        int maxProfit = 0;
 
-       for(int i = prices.length-1; i >= 0; i--){
-            int profit = lastHigh - prices[i];
-            if(maxProfit < profit) maxProfit = profit;
+        for(int i = n - 1; i>=0; i--){
+            int profit = currentHigh - prices[i];
 
-            if(prices[i] > lastHigh) 
-            lastHigh = prices[i];
-       } 
-       return maxProfit;
+            if(profit > maxProfit) maxProfit = profit;
+            if(prices[i] > currentHigh) currentHigh = prices[i];
+        }
+        return maxProfit;
     }
 }
