@@ -8,7 +8,6 @@ class Solution {
             reverseNumber = (reverseNumber * 10) + remainder;
             number = number / 10;
         }
-        if(reverseNumber == numberCopy) return true;
-        else return false;
+        return reverseNumber == numberCopy;
     }
 }
