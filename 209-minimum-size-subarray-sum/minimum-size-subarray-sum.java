@@ -10,14 +10,12 @@ class Solution {
 
             while(sum >= target){
                 minLength = Math.min(minLength , end - start + 1);
-
-                if(start >= nums.length) break;
+                
                 sum -= nums[start];
                 start++;
             }
             end++;
         }
-        if(minLength == Integer.MAX_VALUE) return 0;
-        else return minLength;
+        return minLength == Integer.MAX_VALUE ? 0 : minLength;
     }
 }
