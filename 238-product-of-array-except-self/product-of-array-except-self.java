@@ -1,3 +1,10 @@
+/*This answer is based on observation that there can be three cases only 
+
+1st case: no zeroes --> then answer will be ( product of whole array / nums[i] )
+2nd case: one zero ---> Everything zero , except place of zero nums[placeofzero] = product of everything
+3rd case: two zero ----> everything zero
+
+*/
 class Solution {
     public int[] productExceptSelf(int[] nums) {
         int n = nums.length;
