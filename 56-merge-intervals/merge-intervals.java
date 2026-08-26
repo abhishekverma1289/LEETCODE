@@ -9,7 +9,6 @@ class Solution {
 
             for(int i=1; i<intervals.length; i++){
                if(secondInterval >= intervals[i][0]){
-                firstInterval = Math.min(firstInterval , intervals[i][0]);
                 secondInterval = Math.max(secondInterval , intervals[i][1]);
                }
                else{
