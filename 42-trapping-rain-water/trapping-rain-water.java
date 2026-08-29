@@ -18,15 +18,12 @@ class Solution {
             max = heights[i];
         }
 
-        int totalwater = 0; int water = 0;
+        int totalwater = 0;
 
         for(int i=0; i<heights.length; i++){
-            if(prefixMax[i] <= heights[i] || suffixMax[i] <= heights[i]){
-                water = 0;
+            if(prefixMax[i] > heights[i] && suffixMax[i] > heights[i]){
+                totalwater += Math.min(prefixMax[i] , suffixMax[i]) - heights[i];
             }
-            else water = Math.min(prefixMax[i] , suffixMax[i]) - heights[i];
-
-            totalwater = totalwater + water;
         }
         return totalwater;
         } 
