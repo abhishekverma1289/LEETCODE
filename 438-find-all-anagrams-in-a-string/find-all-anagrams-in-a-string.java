@@ -2,6 +2,8 @@ class Solution {
     public List<Integer> findAnagrams(String s, String p) {
        ArrayList<Integer> list = new ArrayList<>();
 
+       if(p.length() > s.length()) return list;
+
        int[] required = new int[26];
        int[] window = new int[26];
 
@@ -10,7 +12,7 @@ class Solution {
        }
 
        // creating a Window
-       for(int i = 0; i<p.length() && i<s.length(); i++){
+       for(int i = 0; i<p.length(); i++){
         char ch = s.charAt(i);
         window[ch - 'a']++;
        } 
