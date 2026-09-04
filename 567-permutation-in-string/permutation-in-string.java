@@ -8,12 +8,9 @@ class Solution {
        if(s2.length() < s1.length()) return false;
 
        //required map
-       int uniqueChar = 0;
        for(int i=0; i<s1.length(); i++){
             char ch = s1.charAt(i);
             int value = map2.getOrDefault(ch,0);
-            if(value == 0) uniqueChar++;
-
             map2.put(ch , value + 1);
         }
         
@@ -28,7 +25,7 @@ class Solution {
             }
         }
 
-        if(formed == uniqueChar){
+        if(formed == map2.size()){
             return true;
         }
 
@@ -48,7 +45,7 @@ class Solution {
             }
             low++;
 
-            if(formed == uniqueChar) return true;
+            if(formed == map2.size()) return true;
         }
         return false;
     }
