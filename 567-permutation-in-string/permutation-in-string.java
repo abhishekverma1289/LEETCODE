@@ -1,51 +1,34 @@
 class Solution {
     public boolean checkInclusion(String s1, String s2) {
-       HashMap< Character , Integer > map = new HashMap<>();
-       HashMap< Character , Integer >  map2 = new HashMap<>();
-       int formed = 0;
+        int[] window = new int[26];
+        int[] required = new int[26];
 
-       //edge case 
-       if(s2.length() < s1.length()) return false;
-
-       //required map
-       for(int i=0; i<s1.length(); i++){
-            char ch = s1.charAt(i);
-            int value = map2.getOrDefault(ch,0);
-            map2.put(ch , value + 1);
-        }
+        if(s1.length() > s2.length()) return false;
         
+        //required  
+        for(char ch: s1.toCharArray()){
+            required[ch - 'a']++;
+        }
 
-        //current window map
+        //current window
         for(int i=0; i<s1.length(); i++){
             char ch = s2.charAt(i);
-            map.put(ch , map.getOrDefault(ch,0)+1);
-
-            if(map2.containsKey(ch) && (int) map.get(ch) == (int) map2.get(ch)){
-                formed++;
-            }
+            window[ch - 'a']++;
         }
 
-        if(formed == map2.size()){
-            return true;
-        }
+        if(Arrays.equals(required , window)) return true;
 
+        //move the window
         int low = 0;
-        for(int high = s1.length(); high<s2.length() ; high++){
-            char ch = s2.charAt(high);
-            char lowch= s2.charAt(low);
+        for(int high = s1.length(); high<s2.length(); high++){
+            char highChar = s2.charAt(high);
+            window[highChar - 'a']++;
 
-            if(map2.containsKey(lowch) && (int) map.get(lowch) == (int) map2.get(lowch)){
-                formed--;
-            }
-            map.put(lowch , map.get(lowch) - 1);
-
-            map.put(ch , map.getOrDefault(ch,0)+1);
-            if(map2.containsKey(ch) && (int) map.get(ch) == (int) map2.get(ch)){
-                formed++;
-            }
+            char lowChar = s2.charAt(low);
+            window[lowChar - 'a']--;
             low++;
 
-            if(formed == map2.size()) return true;
+            if(Arrays.equals(required , window)) return true;
         }
         return false;
     }
