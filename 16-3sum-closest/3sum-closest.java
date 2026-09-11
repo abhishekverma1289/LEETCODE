@@ -11,8 +11,10 @@ class Solution {
             while(mid < end){
                 int sum = nums[start] + nums[mid] + nums[end];
 
-                if(Math.abs(target - sum) < diff) closest = sum;
-                diff = Math.min(Math.abs(target - sum) , diff);
+                if(Math.abs(target - sum) < diff){
+                    closest = sum;
+                    diff = Math.abs(target - sum);
+                }
 
                 if(sum > target) end--;
                 else if(sum < target) mid++;
