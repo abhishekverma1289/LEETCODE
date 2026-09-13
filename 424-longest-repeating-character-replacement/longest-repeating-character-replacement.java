@@ -8,9 +8,7 @@ class Solution {
             int chValue = map.getOrDefault(ch , 0) + 1;
             map.put(ch,chValue);
 
-            if(chValue >= maxChValue){
-                maxChValue = chValue;
-            }
+            maxChValue = Math.max(maxChValue , chValue);
 
             while(high - low + 1 - maxChValue > k){
                 char lowCh = s.charAt(low);
