@@ -1,49 +1,38 @@
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-        Arrays.sort(nums);
+         Arrays.sort(nums);
+         List<List<Integer>> list = new ArrayList<>();
 
-        List<List<Integer>> result = new ArrayList<>();
-
-        for (int i = 0; i < nums.length - 2; i++) {
-            if (i > 0 && nums[i] == nums[i - 1]) {
+         for(int start = 0; start<nums.length - 2; start++){
+            //skip the start duplicates
+            if (start > 0 && nums[start] == nums[start - 1]) {
                 continue;
             }
 
-            int start = i + 1;
             int end = nums.length - 1;
+            int mid = start + 1;
 
-            while (start < end) {
-
-                int sum = nums[i] + nums[start] + nums[end];
-
-                if (sum > 0) {
-                    end--;
-                }
-                else if (sum < 0) {
-                    start++;
-                }
+            while(mid < end){
+                int sum = nums[start] + nums[mid] + nums[end];
+                if(sum > 0) end--;
+                else if(sum < 0) mid++;
                 else{
+                    list.add(Arrays.asList(nums[start] , nums[mid] , nums[end]));
 
-                    result.add(Arrays.asList(
-                        nums[i],
-                        nums[start],
-                        nums[end]
-                    ));
-
-                    while (start < end && nums[start] == nums[start + 1]) {
-                        start++;
+                 // Skip duplicate mid values
+                    while (mid < end && nums[mid] == nums[mid + 1]) {
+                        mid++;
                     }
 
-                    while (start < end && nums[end] == nums[end - 1]) {
+                    // Skip duplicate end values
+                    while (mid < end && nums[end] == nums[end - 1]) {
                         end--;
                     }
-
-                    start++;
-                    end--;
+                    
+                    mid++; end--;
                 }
-
             }
-        }
-        return result;
+         }
+         return list;
     }
 }
