@@ -8,7 +8,7 @@ class Solution {
         }
 
         for(int i=n; i<2*n; i++){
-            ans[i] = nums[i-n];
+            ans[i] = nums[i%n];
         }
 
         return ans;
