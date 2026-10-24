@@ -1,13 +1,15 @@
 class Solution {
-    public boolean isPalindrome(int number) {
-        int reverseNumber = 0;
-        int numberCopy = number;
+    public boolean isPalindrome(int x) {
+        String s = String.valueOf(x); // Convert to String
+        int n = s.length(); // Store the String length to int n
 
-        while(number > 0){
-            int remainder = number % 10;
-            reverseNumber = (reverseNumber * 10) + remainder;
-            number = number / 10;
+        for (int i=0; i<n/2; i++) {
+            // We check whether the elements at the same distance from
+            // beginning and from ending are same, if not we return false
+            if (s.charAt(i) != s.charAt(n-i-1)) return false;
         }
-        return reverseNumber == numberCopy;
+
+        // if no flaws are found we return true
+        return true;
     }
 }
